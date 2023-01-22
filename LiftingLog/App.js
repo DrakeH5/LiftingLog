@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { Text, View} from 'react-native';
+import { Text, View, TouchableOpacity } from 'react-native';
 import {Image} from 'react-native'; 
 import {Button} from 'react-native'; 
 
@@ -15,6 +15,12 @@ export default function Homepage() {
     backgroundColor: "rgb(10,10,10)",
     height: "100%"
   }
+  const buttonStyles = {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    top: "-15%",
+  }
 
   const [page, setPage] = useState('home')
 
@@ -25,9 +31,13 @@ export default function Homepage() {
         <Text>Lifting Log!</Text>
         <Image style={mainLogoStyle} source={require('./mainLogo.png')} />
         <StatusBar style="auto" /> 
-        <View>
-          <Button title="WORKOUT" color="white" onPress={() => {setPage("workouts")}} />
-          <Button title="DIET" color="white" onPress={() => {setPage("diet")}} />
+        <View style={buttonStyles}>
+        <TouchableOpacity onPress={() => {setPage("workouts")}}>
+          <Image source={require('./workoutIcon.png')} />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => {setPage("diet")}}>
+          <Image source={require('./dietIcon.png')} />
+        </TouchableOpacity>
         </View>
       </View>
     );
