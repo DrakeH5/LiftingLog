@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
 import {Image} from 'react-native'; 
 import {Button} from 'react-native'; 
+import DietPage from "./dietPage.js"
 
 export default function Homepage() {
   const mainLogoStyle = {
@@ -44,7 +45,7 @@ export default function Homepage() {
   } else if(page == "workouts"){
     <Text>Workouts</Text>
   } else if(page == "diet"){
-    <Text>Diet</Text>
+    <DietPage></DietPage>
   } else {
     return <Text>Sorry, we can not find that page!</Text>
   }
