@@ -47,7 +47,7 @@ export default function Homepage() {
   } else if(page == "diet"){
     return (
       <View>
-        <TouchableOpacity style={{marginTop: "10%"}} onPress={() => {setPage("home")}}>
+        <TouchableOpacity style={{marginTop: "10%", position: "absolute", zIndez: 1}} onPress={() => {setPage("home")}}>
           <Image source={require('./homeIcon.png')} />
         </TouchableOpacity>
         <DietPage></DietPage>
