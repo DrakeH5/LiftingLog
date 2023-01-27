@@ -45,7 +45,14 @@ export default function Homepage() {
   } else if(page == "workouts"){
     <Text>Workouts</Text>
   } else if(page == "diet"){
-    <DietPage></DietPage>
+    return (
+      <View>
+        <TouchableOpacity style={{marginTop: "10%"}} onPress={() => {setPage("home")}}>
+          <Image source={require('./homeIcon.png')} />
+        </TouchableOpacity>
+        <DietPage></DietPage>
+      </View>
+    )
   } else {
     return <Text>Sorry, we can not find that page!</Text>
   }
