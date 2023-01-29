@@ -25,14 +25,14 @@ export default function Homepage() {
         margin: "10%"
     }
 
-    var dietHistoryData = ["Apple / 200"]
+    var dietHistoryData = [["Apple", 200, "1/29/2023"]]
 
     var dietHistoryComponentsFromServerData = []
 
     for(var i=0; i<dietHistoryData.length; i++){
         dietHistoryComponentsFromServerData.push(
             <View id={i} style={{borderColor: "grey", borderWidth: 2, margin: "3%"}}>
-                <Text style={generalTextStyle}>{dietHistoryData[i]}</Text>
+                <Text style={generalTextStyle}>{dietHistoryData[i][0]} {dietHistoryData[i][1]} {dietHistoryData[i][2]}</Text>
             </View>
         )
     }
@@ -41,10 +41,11 @@ export default function Homepage() {
     
 
     function addToHistory(name, cals){
+        var date = new Date()
         setDietHistoryComponents((prevComponents) => [
             ...prevComponents,
             <View style={{borderColor: "grey", borderWidth: 2, margin: "3%"}}>
-                <Text style={generalTextStyle}>{name} / {cals}</Text>
+                <Text style={generalTextStyle}>{name} {cals} {date.getMonth()+1}/{date.getDate()}/{date.getFullYear()}</Text>
             </View>
         ]);
     }
