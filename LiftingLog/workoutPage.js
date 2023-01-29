@@ -1,5 +1,6 @@
 import { Text, View, Modal, Button, TextInput } from 'react-native';
 import { useState } from 'react';
+import WorkoutHistoryModal from "./workoutHistoryModal.js"
 
 export default function WorkoutPage() {
 
@@ -25,10 +26,12 @@ export default function WorkoutPage() {
         margin: "10%"
     }
 
+
+    const [showWorkoutHistory, setShowWorkoutHistory] = useState(true)
    
     return (
         <View style={mainStyle}>
-
+            <Modal transparent={true} visible={showWorkoutHistory}><WorkoutHistoryModal></WorkoutHistoryModal></Modal>
         </View>
     )
 }
