@@ -1,6 +1,7 @@
-import { Text, View, Modal, Button, TextInput } from 'react-native';
+import { Text, View, Modal, Button, TextInput, Image, TouchableOpacity } from 'react-native';
 import { useState } from 'react';
 import WorkoutHistoryModal from "./workoutHistoryModal.js"
+import { TouchableOpacityComponent } from 'react-native';
 
 export default function WorkoutPage() {
 
@@ -27,10 +28,11 @@ export default function WorkoutPage() {
     }
 
 
-    const [showWorkoutHistory, setShowWorkoutHistory] = useState(true)
+    const [showWorkoutHistory, setShowWorkoutHistory] = useState(false)
    
     return (
         <View style={mainStyle}>
+            <TouchableOpacity style={{position: "absolute", top: 40, right: 10}} onPress={() => {setShowWorkoutHistory(true)}}><Image source={require('./workoutHistoryIcon.png')} /></TouchableOpacity>
             <Modal transparent={true} visible={showWorkoutHistory}><WorkoutHistoryModal></WorkoutHistoryModal></Modal>
         </View>
     )
