@@ -1,9 +1,9 @@
-import { Text, View } from 'react-native';
+import { Text, View, TouchableOpacity, Image, Modal, Button } from 'react-native';
 import { useState } from 'react';
 
 export default function WorkoutHistoryModal() {
 
-    const mainStyle = {
+    const modalViewStyle = {
         position: "relative", 
         top: "20%", 
         backgroundColor: "grey", 
@@ -12,9 +12,18 @@ export default function WorkoutHistoryModal() {
         margin: "10%"
     }
 
+
+    const [showWorkoutHistory, setShowWorkoutHistory] = useState(false)
+
     return (
-        <View style={mainStyle}>
-            <Text>WORKOUT HISTORY</Text>
+        <View>
+            <TouchableOpacity style={{position: "absolute", top: 30, right: 20}} onPress={() => {setShowWorkoutHistory(true)}}><Image source={require('./workoutHistoryIcon.png')} /></TouchableOpacity>
+            <Modal transparent={true} visible={showWorkoutHistory}>
+                <View style={modalViewStyle}>
+                    <Text>WORKOUT HISTORY</Text>
+                    <Button title="X" onPress={() => {setShowWorkoutHistory(false)}} />
+                </View>
+            </Modal>
         </View>
     )
 }

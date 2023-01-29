@@ -9,8 +9,6 @@ export default function WorkoutPage() {
         backgroundColor: "rgb(15,15,15)", 
         height: "100%", 
         zIndex: -1,
-        justifyContent: "center",
-        alignItems: "center",
     }
 
     const generalTextStyle = {
@@ -26,14 +24,10 @@ export default function WorkoutPage() {
         alignItems: "center", 
         margin: "10%"
     }
-
-
-    const [showWorkoutHistory, setShowWorkoutHistory] = useState(false)
    
     return (
         <View style={mainStyle}>
-            <TouchableOpacity style={{position: "absolute", top: 40, right: 10}} onPress={() => {setShowWorkoutHistory(true)}}><Image source={require('./workoutHistoryIcon.png')} /></TouchableOpacity>
-            <Modal transparent={true} visible={showWorkoutHistory}><WorkoutHistoryModal></WorkoutHistoryModal></Modal>
+            <WorkoutHistoryModal></WorkoutHistoryModal>
         </View>
     )
 }
