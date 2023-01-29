@@ -4,6 +4,7 @@ import { Text, View, TouchableOpacity } from 'react-native';
 import {Image} from 'react-native'; 
 import {Button} from 'react-native'; 
 import DietPage from "./dietPage.js"
+import WorkoutPage from './workoutPage.js';
 
 export default function Homepage() {
   const mainLogoStyle = {
@@ -43,7 +44,14 @@ export default function Homepage() {
       </View>
     );
   } else if(page == "workouts"){
-    <Text>Workouts</Text>
+    return (
+      <View>
+        <TouchableOpacity style={{marginTop: "10%", position: "absolute", zIndez: 1}} onPress={() => {setPage("home")}}>
+          <Image source={require('./homeIcon.png')} />
+        </TouchableOpacity>
+        <WorkoutPage></WorkoutPage>
+      </View>
+    )
   } else if(page == "diet"){
     return (
       <View>

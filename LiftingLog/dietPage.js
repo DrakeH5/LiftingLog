@@ -1,7 +1,7 @@
 import { Text, View, Modal, Button, TextInput } from 'react-native';
 import { useState } from 'react';
 
-export default function Homepage() {
+export default function DietPage() {
 
     const mainStyle = {
         backgroundColor: "rgb(30,30,30)", 
