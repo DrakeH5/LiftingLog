@@ -4,7 +4,7 @@ import { useState } from 'react';
 export default function Homepage() {
 
     const mainStyle = {
-        backgroundColor: "rgb(50,50,50)", 
+        backgroundColor: "rgb(30,30,30)", 
         height: "100%", 
         zIndex: -1,
         justifyContent: "center",
