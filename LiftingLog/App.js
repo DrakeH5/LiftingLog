@@ -5,7 +5,7 @@ import SignedOutPage from './SignedOutPage.js';
 
 export default function Homepage(){
 
-  const [signedIn, setSignedIn] = useState(true)
+  const [signedIn, setSignedIn] = useState(false)
 
   if(signedIn){
     return <SignedInPage/>
