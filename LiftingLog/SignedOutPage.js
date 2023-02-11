@@ -1,40 +1,18 @@
 import * as React from 'react';
-import { View, Text, Button } from 'react-native';
-import {API_KEY, EXPO_CLIENT_ID, WEB_CLIENT_ID, IOS_CLIENT_ID} from "@env"; 
-
-import * as WebBrowser from 'expo-web-browser';
-import * as Google from 'expo-auth-session/providers/google';
-
-WebBrowser.maybeCompleteAuthSession();
-
+import { View, Text, Button, TextInput } from 'react-native';
+import { useState } from 'react';
 
 export default function SignedOutPage() {
 
-
-    const [request, response, promptAsync] = Google.useAuthRequest({
-        expoClientId: EXPO_CLIENT_ID,
-        iosClientId: IOS_CLIENT_ID,
-        //androidClientId: 'GOOGLE_GUID.apps.googleusercontent.com',
-        webClientId: WEB_CLIENT_ID,
-      });
-    
-      React.useEffect(() => {
-        if (response?.type === 'success') {
-          const { authentication } = response;
-        }
-      }, [response]);
+  const [userName, setUsername] = useState("")
+  const [password, setPassword] = useState("")
 
   return (
-    <View style={{position: "absolute", top: "50%"}}>
-        <Text>Please Sign In</Text> 
-        <Text>{API_KEY}</Text>
-        <Button
-        disabled={!request}
-        title="Login"
-        onPress={() => {
-            promptAsync();
-        }}
-        />
+    <View style={{position: "absolute", top: "40%", left: "30%"}}>
+        <TextInput onChangeText={text => setUsername(text)} placeholder="Username" style={{padding: 20}} id="userName"></TextInput>
+        <TextInput onChangeText={text => setPassword(text)} placeholder="Password" style={{padding: 20}} id="password"></TextInput>
+        <Button title="Log In" />  
+        <Button title="Sign Up" />  
     </View>
   )
 }
