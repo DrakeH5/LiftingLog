@@ -4,6 +4,9 @@ import { useState } from 'react';
 
 export default function SignedOutPage() {
 
+
+  const [didItWork, setDidItWork] = useState("")
+
   function createAccount(){
     fetch('http:192.168.2.115:5000/createAccount', {
       method: 'POST',
@@ -15,6 +18,8 @@ export default function SignedOutPage() {
         userName: userName,
         password: password,
       }),
+    }).then(res => res.json()).then(data => {
+        setDidItWork(data)
     });
   }
 
@@ -28,6 +33,7 @@ export default function SignedOutPage() {
         <TextInput onChangeText={text => setPassword(text)} placeholder="Password" style={{padding: 20}} id="password"></TextInput>
         <Button title="Log In" />  
         <Button title="Sign Up" onPress={createAccount} />  
+        <Text>{didItWork}</Text>
     </View>
   )
 }
