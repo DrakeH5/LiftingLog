@@ -4,6 +4,21 @@ import { useState } from 'react';
 
 export default function SignedOutPage() {
 
+  function createAccount(){
+    fetch('http:192.168.2.115:5000/createAccount', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        userName: userName,
+        password: password,
+      }),
+    });
+  }
+
+
   const [userName, setUsername] = useState("")
   const [password, setPassword] = useState("")
 
@@ -12,7 +27,7 @@ export default function SignedOutPage() {
         <TextInput onChangeText={text => setUsername(text)} placeholder="Username" style={{padding: 20}} id="userName"></TextInput>
         <TextInput onChangeText={text => setPassword(text)} placeholder="Password" style={{padding: 20}} id="password"></TextInput>
         <Button title="Log In" />  
-        <Button title="Sign Up" />  
+        <Button title="Sign Up" onPress={createAccount} />  
     </View>
   )
 }
