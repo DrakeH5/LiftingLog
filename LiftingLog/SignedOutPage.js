@@ -23,6 +23,22 @@ export default function SignedOutPage() {
     });
   }
 
+  function logIn(){
+    fetch('http:192.168.2.115:5000/loginToAccount', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        userName: userName,
+        password: password,
+      }),
+    }).then(res => res.json()).then(data => {
+        setDidItWork(data)
+    });
+  }
+
 
   const [userName, setUsername] = useState("")
   const [password, setPassword] = useState("")
@@ -31,7 +47,7 @@ export default function SignedOutPage() {
     <View style={{position: "absolute", top: "40%", left: "30%"}}>
         <TextInput onChangeText={text => setUsername(text)} placeholder="Username" style={{padding: 20}} id="userName"></TextInput>
         <TextInput onChangeText={text => setPassword(text)} placeholder="Password" style={{padding: 20}} id="password"></TextInput>
-        <Button title="Log In" />  
+        <Button title="Log In" onPress={logIn} />  
         <Button title="Sign Up" onPress={createAccount} />  
         <Text>{didItWork}</Text>
     </View>

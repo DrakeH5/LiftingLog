@@ -40,4 +40,22 @@ app.post("/createAccount", bodyParser.json(), (req, res) => {
   });
 })
 
+app.post("/loginToAccount", bodyParser.json(), (req, res) => {
+  console.log("got request")
+  database.find({"userName": req.body.userName},(err, data) => {
+    if(data.length>0){
+        if(data[0]["password"]==req.body.password){
+        console.log("Logged in!")
+        res.json("success")
+        return;
+      } else {
+        console.log("Sorry, password did not match")
+        res.json("Sorry, password did not match")
+      }
+    }
+    console.log("Sorry, could not find your account")
+    res.json("Sorry, could not find your account")
+  });
+})
+
 app.listen(5000, () => { console.log("Server started on port 5000") })
