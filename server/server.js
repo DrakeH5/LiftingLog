@@ -52,9 +52,10 @@ app.post("/loginToAccount", bodyParser.json(), (req, res) => {
         console.log("Sorry, password did not match")
         res.json("Sorry, password did not match")
       }
+    } else {
+      console.log("Sorry, could not find your account")
+      res.json("Sorry, could not find your account")
     }
-    console.log("Sorry, could not find your account")
-    res.json("Sorry, could not find your account")
   });
 })
 
