@@ -7,10 +7,14 @@ export default function Homepage(){
 
   const [signedIn, setSignedIn] = useState(false)
 
+  const logIn = () => {
+    setSignedIn(true)
+  }
+
   if(signedIn){
     return <SignedInPage/>
   } else {
-    return <SignedOutPage/>
+    return <SignedOutPage changeLogedIn={logIn}/>
   }
 }
 

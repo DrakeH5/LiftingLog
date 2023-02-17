@@ -2,8 +2,7 @@ import * as React from 'react';
 import { View, Text, Button, TextInput } from 'react-native';
 import { useState } from 'react';
 
-export default function SignedOutPage() {
-
+export default function SignedOutPage({changeLogedIn}) {
 
   const [didItWork, setDidItWork] = useState("")
 
@@ -36,6 +35,9 @@ export default function SignedOutPage() {
       }),
     }).then(res => res.json()).then(data => {
         setDidItWork(data)
+        if(data=="success"){
+          changeLogedIn()
+        }
     });
   }
 
