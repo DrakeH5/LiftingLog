@@ -1,6 +1,7 @@
 import { Text, View, Modal, Button, TextInput, Image, TouchableOpacity } from 'react-native';
 import { useState } from 'react';
 import WorkoutHistoryModal from "./workoutHistoryModal.js"
+import AddWorkoutModal from "./addWorkoutModal.js"
 import { TouchableOpacityComponent } from 'react-native';
 
 export default function WorkoutPage({userName}) {
@@ -27,6 +28,7 @@ export default function WorkoutPage({userName}) {
    
     return (
         <View style={mainStyle}>
+                        <AddWorkoutModal userName={userName}></AddWorkoutModal>
             <WorkoutHistoryModal userName={userName}></WorkoutHistoryModal>
         </View>
     )

@@ -87,5 +87,11 @@ app.post("/getWorkoutHistory", bodyParser.json(), (req, res) => {
   });
 })
 
+app.post("/addToWorkoutHistory", bodyParser.json(), (req, res) => {
+  database.update({ userName: req.body.userName }, { $push: { workoutHistory: req.body.workouts } }, {}, function () {
+    res.json("Added!")
+  });       
+})
+
 
 app.listen(5000, () => { console.log("Server started on port 5000") })
