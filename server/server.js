@@ -70,4 +70,12 @@ app.post("/getDietHistory", bodyParser.json(), (req, res) => {
   });
 })
 
+
+app.post("/addToDietHistory", bodyParser.json(), (req, res) => {
+        database.update({ userName: req.body.userName }, { $push: { dietHistory: req.body.foodData } }, {}, function () {
+
+        });       
+})
+
+
 app.listen(5000, () => { console.log("Server started on port 5000") })

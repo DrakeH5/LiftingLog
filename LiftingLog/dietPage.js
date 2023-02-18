@@ -64,15 +64,20 @@ export default function DietPage({userName}) {
     
     getDietHistoryFromServer()
 
-    
+
     function addToHistory(name, cals){
         var date = new Date()
-        setDietHistoryComponents((prevComponents) => [
-            ...prevComponents,
-            <View style={{borderColor: "grey", borderWidth: 2, margin: "3%"}}>
-                <Text style={generalTextStyle}>{name} {cals} {date.getMonth()+1}/{date.getDate()}/{date.getFullYear()}</Text>
-            </View>
-        ]);
+        fetch('http:192.168.2.115:5000/addToDietHistory', {
+            method: 'POST',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              userName: userName,
+              foodData: [name, cals, date.getMonth()+1+"/"+date.getDate()+"/"+date.getFullYear()]
+            }),
+          })
     }
 
 
