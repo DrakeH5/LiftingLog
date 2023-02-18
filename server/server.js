@@ -29,7 +29,7 @@ app.post("/createAccount", bodyParser.json(), (req, res) => {
   console.log("got request")
   database.find({"userName": req.body.userName},(err, data) => {
     if(data.length==0){
-      var newUser = {"userName": req.body.userName, "password": req.body.password, "workoutHistory": {}, "dietHistory": {}};
+      var newUser = {"userName": req.body.userName, "password": req.body.password, "workoutHistory": [], "dietHistory": []};
       database.insert(newUser);
       console.log("Account created!")
       res.json("Account created!")
@@ -55,6 +55,17 @@ app.post("/loginToAccount", bodyParser.json(), (req, res) => {
     } else {
       console.log("Sorry, could not find your account")
       res.json("Sorry, could not find your account")
+    }
+  });
+})
+
+
+app.post("/getDietHistory", bodyParser.json(), (req, res) => {
+  database.find({"userName": req.body.userName},(err, data) => {
+    if(data.length>0){
+        res.send(data[0]["dietHistory"])
+    } else {
+      res.json("Error")
     }
   });
 })

@@ -65,7 +65,7 @@ export default function SignedInPage({userName}) {
         <TouchableOpacity style={{marginTop: "10%", position: "absolute", zIndez: 1}} onPress={() => {setPage("home")}}>
           <Image source={require('./homeIcon.png')} />
         </TouchableOpacity>
-        <DietPage></DietPage>
+        <DietPage userName={userName}></DietPage>
       </View>
     )
   } else {
