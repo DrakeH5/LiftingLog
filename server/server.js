@@ -70,11 +70,21 @@ app.post("/getDietHistory", bodyParser.json(), (req, res) => {
   });
 })
 
-
 app.post("/addToDietHistory", bodyParser.json(), (req, res) => {
         database.update({ userName: req.body.userName }, { $push: { dietHistory: req.body.foodData } }, {}, function () {
 
         });       
+})
+
+
+app.post("/getWorkoutHistory", bodyParser.json(), (req, res) => {
+  database.find({"userName": req.body.userName},(err, data) => {
+    if(data.length>0){
+        res.send(data[0]["workoutHistory"])
+    } else {
+      res.json("Error")
+    }
+  });
 })
 
 

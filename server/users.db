@@ -1,6 +1,1 @@
-{"userName":"Test","password":"122","workoutHistory":{},"dietHistory":[["Apple",200,"1/29/2023"]],"_id":"c6n4Mtr8jtBEL8M6"}
-{"userName":"Test","password":"122","workoutHistory":{},"dietHistory":[["Apple",200,"1/29/2023"],["Banan","200","2/18/2023"]],"_id":"c6n4Mtr8jtBEL8M6"}
-{"userName":"Test","password":"122","workoutHistory":{},"dietHistory":[["Apple",200,"1/29/2023"],["Banan","200","2/18/2023"],["Cheese burger ",null,"2/18/2023"]],"_id":"c6n4Mtr8jtBEL8M6"}
-{"userName":"test","password":"123","workoutHistory":[],"dietHistory":[],"_id":"0BF8RXFaNWIxFhQl"}
-{"userName":"test","password":"123","workoutHistory":[],"dietHistory":[["Pineapple ","500","2/18/2023"]],"_id":"0BF8RXFaNWIxFhQl"}
-{"userName":"test","password":"123","workoutHistory":[],"dietHistory":[["Pineapple ","500","2/18/2023"],["Bacon ","300","2/18/2023"]],"_id":"0BF8RXFaNWIxFhQl"}
+{"userName":"Test","password":"122","workoutHistory":[["benchpress 2x5","close-grip benchpress 2x5","curls 3x10","2/2/22"],["squat 2x10","pullups 3x3","3/3/23"]],"dietHistory":[["Apple",200,"1/29/2023"]],"_id":"c6n4Mtr8jtBEL8M6"}

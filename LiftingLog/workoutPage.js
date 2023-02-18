@@ -3,7 +3,7 @@ import { useState } from 'react';
 import WorkoutHistoryModal from "./workoutHistoryModal.js"
 import { TouchableOpacityComponent } from 'react-native';
 
-export default function WorkoutPage() {
+export default function WorkoutPage({userName}) {
 
     const mainStyle = {
         backgroundColor: "rgb(15,15,15)", 
@@ -27,7 +27,7 @@ export default function WorkoutPage() {
    
     return (
         <View style={mainStyle}>
-            <WorkoutHistoryModal></WorkoutHistoryModal>
+            <WorkoutHistoryModal userName={userName}></WorkoutHistoryModal>
         </View>
     )
 }
