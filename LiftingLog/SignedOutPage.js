@@ -36,7 +36,7 @@ export default function SignedOutPage({changeLogedIn}) {
     }).then(res => res.json()).then(data => {
         setDidItWork(data)
         if(data=="success"){
-          changeLogedIn()
+          changeLogedIn(userName)
         }
     });
   }

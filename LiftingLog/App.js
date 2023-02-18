@@ -5,14 +5,14 @@ import SignedOutPage from './SignedOutPage.js';
 
 export default function Homepage(){
 
-  const [signedIn, setSignedIn] = useState(false)
+  const [signedIn, setSignedIn] = useState()
 
-  const logIn = () => {
-    setSignedIn(true)
+  function logIn(userName) {
+    setSignedIn(userName);
   }
 
   if(signedIn){
-    return <SignedInPage/>
+    return <SignedInPage userName={signedIn}/>
   } else {
     return <SignedOutPage changeLogedIn={logIn}/>
   }

@@ -6,7 +6,7 @@ import {Button} from 'react-native';
 import DietPage from "./dietPage.js"
 import WorkoutPage from './workoutPage.js';
 
-export default function SignedInPage() {
+export default function SignedInPage({userName}) {
   const mainLogoStyle = {
     width: "100%",
     height: "75%",
@@ -23,6 +23,12 @@ export default function SignedInPage() {
     alignItems: "center",
     top: "-15%",
   }
+  const userNameStyle = {
+    color: "grey",
+    position: "absolute",
+    right: "10%",
+    top: "10%",
+  }
 
   const [page, setPage] = useState('home')
 
@@ -34,13 +40,14 @@ export default function SignedInPage() {
         <Image style={mainLogoStyle} source={require('./mainLogo.png')} />
         <StatusBar style="auto" /> 
         <View style={buttonStyles}>
-        <TouchableOpacity onPress={() => {setPage("workouts")}}>
-          <Image source={require('./workoutIcon.png')} />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => {setPage("diet")}}>
-          <Image source={require('./dietIcon.png')} />
-        </TouchableOpacity>
+          <TouchableOpacity onPress={() => {setPage("workouts")}}>
+            <Image source={require('./workoutIcon.png')} />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => {setPage("diet")}}>
+            <Image source={require('./dietIcon.png')} />
+          </TouchableOpacity>
         </View>
+        <Text style={userNameStyle}>{userName}</Text>
       </View>
     );
   } else if(page == "workouts"){
