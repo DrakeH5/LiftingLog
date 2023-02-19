@@ -20,7 +20,7 @@ export default function WorkoutPage({userName}) {
     const popupStyle = {
         position: "relative", 
         top: "50%", 
-        backgroundColor: "white", 
+        backgroundColor: "white",  
         justifyContent: "center", 
         alignItems: "center", 
         margin: "10%"
@@ -28,7 +28,8 @@ export default function WorkoutPage({userName}) {
    
     return (
         <View style={mainStyle}>
-                        <AddWorkoutModal userName={userName}></AddWorkoutModal>
+            <Image source={require('./deadliftLogo.png')} style={{position: 'absolute',alignSelf: 'center', bottom: '-5%', width: "100%", height: "100%"}} resizeMode="contain" />
+            <AddWorkoutModal userName={userName}></AddWorkoutModal>
             <WorkoutHistoryModal userName={userName}></WorkoutHistoryModal>
         </View>
     )
