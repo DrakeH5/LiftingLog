@@ -1,5 +1,6 @@
 import { Text, View, Modal, Button, TextInput } from 'react-native';
 import { useState } from 'react';
+import DietPageHistorySection from "./dietPageHistorySection.js"
 
 export default function DietPage({userName}) {
 
@@ -50,12 +51,11 @@ export default function DietPage({userName}) {
 
     var [dietHistoryComponents, setDietHistoryComponents] = useState([])
 
+
     function turnDietHistoryDataIntoComponents(){
         for(var i=0; i<dietHistoryData.length; i++){
-            dietHistoryComponentsFromServerData.push(
-                <View id={i} style={{borderColor: "grey", borderWidth: 2, margin: "3%"}}>
-                    <Text style={generalTextStyle}>{dietHistoryData[i][0]} {dietHistoryData[i][1]} {dietHistoryData[i][2]}</Text>
-                </View>
+          dietHistoryComponentsFromServerData.push(
+              <DietPageHistorySection data={dietHistoryData[i]}/>
             )
         }
         setDietHistoryComponents(dietHistoryComponentsFromServerData)
