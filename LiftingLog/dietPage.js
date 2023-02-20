@@ -53,11 +53,20 @@ export default function DietPage({userName}) {
 
 
     function turnDietHistoryDataIntoComponents(){
+      var foodsFromSameDay=[];
         for(var i=0; i<dietHistoryData.length; i++){
-          dietHistoryComponentsFromServerData.push(
-              <DietPageHistorySection data={dietHistoryData[i]}/>
-            )
+          if(foodsFromSameDay.length==0 || foodsFromSameDay[0][2] == dietHistoryData[i][2] || i+1==dietHistoryData.length){
+            foodsFromSameDay.push(dietHistoryData[i])
+          } else {
+            dietHistoryComponentsFromServerData.push(
+                <DietPageHistorySection data={foodsFromSameDay}/>
+              )
+              foodsFromSameDay = [dietHistoryData[i]] 
+          }
         }
+        dietHistoryComponentsFromServerData.push(
+          <DietPageHistorySection data={foodsFromSameDay}/>
+        )
         setDietHistoryComponents(dietHistoryComponentsFromServerData)
     }
     
