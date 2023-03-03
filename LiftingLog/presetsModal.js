@@ -19,7 +19,7 @@ export default function PresetsModal({userName}) {
 
     function addWorkoutPreset(){
         var date = new Date()
-        var presets = [workout1,workout2,workout3,workout4,workout5,workout6,date.getMonth()+1+"/"+date.getDate()+"/"+date.getFullYear()]
+        var presets = [name,workout1,workout2,workout3,workout4,workout5,workout6,date.getMonth()+1+"/"+date.getDate()+"/"+date.getFullYear()]
         fetch('http:192.168.2.115:5000/addWorkoutPreset', {
           method: 'POST',
           headers: {
@@ -39,6 +39,7 @@ export default function PresetsModal({userName}) {
 
     const [showAddWorkoutModule, setShowAddWorkoutModule] = useState(false)
 
+    const [name, setName] = useState("")
     const [workout1, setWorkout1] = useState("")
     const [workout2, setWorkout2] = useState("")
     const [workout3, setWorkout3] = useState("")
@@ -52,6 +53,7 @@ export default function PresetsModal({userName}) {
             <Modal transparent={true} visible={showAddWorkoutModule}>
                 <View style={modalViewStyle}>
                     <Text>ADD WORKOUT PRESET</Text>
+                    <TextInput onChangeText={text => setName(text)} placeholder="NAME" style={textInputStyle} id="name"></TextInput>
                     <TextInput onChangeText={text => setWorkout1(text)} placeholder="Workout 1" style={textInputStyle} id="workout1"></TextInput>
                     <TextInput onChangeText={text => setWorkout2(text)} placeholder="Workout 2" style={textInputStyle} id="workout2"></TextInput>
                     <TextInput onChangeText={text => setWorkout3(text)} placeholder="Workout 3" style={textInputStyle} id="workout3"></TextInput>

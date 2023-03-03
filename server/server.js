@@ -100,5 +100,16 @@ app.post("/addWorkoutPreset", bodyParser.json(), (req, res) => {
   });       
 })
 
+app.post("/getWorkoutPreset", bodyParser.json(), (req, res) => {
+  database.find({"userName": req.body.userName},(err, data) => {
+    if(data.length>0){
+        res.send(data[0]["WorkoutPreset"])
+    } else {
+      res.json("Error")
+    }
+  });
+})
+
+
 
 app.listen(5000, () => { console.log("Server started on port 5000") })
