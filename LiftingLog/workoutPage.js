@@ -2,6 +2,7 @@ import { Text, View, Modal, Button, TextInput, Image, TouchableOpacity } from 'r
 import { useState } from 'react';
 import WorkoutHistoryModal from "./workoutHistoryModal.js"
 import AddWorkoutModal from "./addWorkoutModal.js"
+import PresetsModal from "./presetsModal.js"
 import { TouchableOpacityComponent } from 'react-native';
 
 export default function WorkoutPage({userName}) {
@@ -31,6 +32,7 @@ export default function WorkoutPage({userName}) {
             <Image source={require('./deadliftLogo.png')} style={{position: 'absolute',alignSelf: 'center', bottom: '-5%', width: "100%", height: "100%"}} resizeMode="contain" />
             <AddWorkoutModal userName={userName}></AddWorkoutModal>
             <WorkoutHistoryModal userName={userName}></WorkoutHistoryModal>
+            <PresetsModal userName={userName}/>
         </View>
     )
 }

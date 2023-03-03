@@ -29,7 +29,7 @@ app.post("/createAccount", bodyParser.json(), (req, res) => {
   console.log("got request")
   database.find({"userName": req.body.userName},(err, data) => {
     if(data.length==0){
-      var newUser = {"userName": req.body.userName, "password": req.body.password, "workoutHistory": [], "dietHistory": []};
+      var newUser = {"userName": req.body.userName, "password": req.body.password, "workoutHistory": [], "dietHistory": [], "WorkoutPreset": []};
       database.insert(newUser);
       console.log("Account created!")
       res.json("Account created!")
@@ -89,6 +89,13 @@ app.post("/getWorkoutHistory", bodyParser.json(), (req, res) => {
 
 app.post("/addToWorkoutHistory", bodyParser.json(), (req, res) => {
   database.update({ userName: req.body.userName }, { $push: { workoutHistory: req.body.workouts } }, {}, function () {
+    res.json("Added!")
+  });       
+})
+
+
+app.post("/addWorkoutPreset", bodyParser.json(), (req, res) => {
+  database.update({ userName: req.body.userName }, { $push: { WorkoutPreset: req.body.presets } }, {}, function () {
     res.json("Added!")
   });       
 })
