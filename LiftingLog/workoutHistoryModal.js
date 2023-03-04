@@ -41,7 +41,7 @@ export default function WorkoutHistoryModal({userName}) {
         var [workoutHistoryComponents, setWorkoutHistoryComponents] = useState([])
     
         function turnWorkoutHistoryDataIntoComponents(){
-            for(var i=0; i<workoutHistoryData.length; i++){
+            for(var i=workoutHistoryData.length-1; i>=0; i--){
                 var allWorkoutsForNDay = [];
                 for(var j=0; allWorkoutsForNDay.length<workoutHistoryData[i].length; j++){
                     allWorkoutsForNDay.push(workoutHistoryData[i][j]+" ")
