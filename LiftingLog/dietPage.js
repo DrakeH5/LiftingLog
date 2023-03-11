@@ -2,6 +2,7 @@ import { Text, View, Modal, Button, TextInput } from 'react-native';
 import { useState } from 'react';
 import DietPageHistorySection from "./dietPageHistorySection.js"
 import DietCalendar from "./dietCalendar.js"
+import DateSpecificData from "./dateSpecificData.js"
 
 export default function DietPage({userName}) {
 
@@ -42,41 +43,12 @@ export default function DietPage({userName}) {
         date: date
       }),
     }).then(res => res.json()).then(data => {
-        //dietHistoryData = data; 
-        //turnDietHistoryDataIntoComponents()
         setHistoryForDate(data)
     });
   }
 
   var [historyForDate, setHistoryForDate] = useState([])
 
-    var dietHistoryData = []
-
-    var dietHistoryComponentsFromServerData = []
-
-    var [dietHistoryComponents, setDietHistoryComponents] = useState([])
-
-
-    function turnDietHistoryDataIntoComponents(){
-      var foodsFromSameDay=[];
-        for(var i=0; i<dietHistoryData.length; i++){
-          if(foodsFromSameDay.length==0 || foodsFromSameDay[0][foodsFromSameDay[0].length-1] == dietHistoryData[i][dietHistoryData[i].length-1] || i+1==dietHistoryData.length){
-            foodsFromSameDay.push(dietHistoryData[i])
-          } else {
-            dietHistoryComponentsFromServerData.push(
-                <DietPageHistorySection data={foodsFromSameDay}/>
-              )
-              foodsFromSameDay = [dietHistoryData[i]] 
-          }
-        }
-        dietHistoryComponentsFromServerData.push(
-          <DietPageHistorySection data={foodsFromSameDay}/>
-        )
-        setDietHistoryComponents(dietHistoryComponentsFromServerData)
-    }
-    
-    
-    //getDietHistoryFromServer()
 
 
     function addToHistory(name, cals, carbs, protein, fat){
@@ -89,7 +61,7 @@ export default function DietPage({userName}) {
             },
             body: JSON.stringify({
               userName: userName,
-              foodData: [name, cals+" cals", carbs+" carbs", protein+" protein", fat+" fat", date.getMonth()+1+"/"+date.getDate()+"/"+date.getFullYear()]
+              foodData: [name, cals, carbs, protein, fat, date.getMonth()+1+"/"+date.getDate()+"/"+date.getFullYear()]
             }),
           })
     }
@@ -134,10 +106,7 @@ export default function DietPage({userName}) {
       )
     } else {
       return (
-        <View style={mainStyle}>
-          <Text>{mode}</Text>
-          <Text>{historyForDate}</Text>
-        </View>
+          <DateSpecificData date={mode} data={historyForDate}/>
       )
     }
 }
