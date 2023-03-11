@@ -1,6 +1,7 @@
 import { Text, View, Modal, Button, TextInput } from 'react-native';
 import { useState } from 'react';
 import DietPageHistorySection from "./dietPageHistorySection.js"
+import DietCalendar from "./dietCalendar.js"
 
 export default function DietPage({userName}) {
 
@@ -107,6 +108,7 @@ export default function DietPage({userName}) {
     return (
         <View style={mainStyle}>
             {dietHistoryComponents}
+            <DietCalendar />
             <Text style={{fontSize: "100%", color: "red", position: "absolute",  bottom: "1%", right: "5%"}} onPress={() => setPopUpVis(true)} >+</Text>
             <Modal transparent={true} visible={popUpVis}>
                 <View style={popupStyle}>
