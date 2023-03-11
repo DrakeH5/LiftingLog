@@ -18,7 +18,7 @@ export default function DietCalendar() {
     }
 
     const mainStyle = {
-        backgroundColor: "white",
+        //backgroundColor: "grey",
     }
 
 
@@ -30,7 +30,7 @@ export default function DietCalendar() {
     var thisMonth = []
     var d = new Date(2023, month, 0);
     for(var i=1; i<=d.getDate(); i++){
-        thisMonth.push(i + " ")
+        thisMonth.push(<Button title={i + " "}></Button>)
         if(i%7==0){
             thisMonth.push("\n")
         }
@@ -40,7 +40,7 @@ export default function DietCalendar() {
     return (
         <View style={mainStyle}>
             <Button title="<" onPress={() => {setMonth(month-1); if(month<=1){setMonth(12); setYear(year-1)}}}></Button>
-            <Text>{month} / {year}</Text>
+            <Text style={{fontSize: "25%", color: "white"}}>{month} / {year}</Text>
             <Button title=">" onPress={() => {setMonth(month+1); if(month>=12){setMonth(1); setYear(year+1)}}}></Button>
             <Text>{thisMonth}</Text>
         </View>
