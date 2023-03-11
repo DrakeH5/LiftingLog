@@ -63,7 +63,16 @@ app.post("/loginToAccount", bodyParser.json(), (req, res) => {
 app.post("/getDietHistory", bodyParser.json(), (req, res) => {
   database.find({"userName": req.body.userName},(err, data) => {
     if(data.length>0){
-        res.send(data[0]["dietHistory"])
+        var dataForSpecificDay = []
+        for(var i=0; i<data[0]["dietHistory"].length; i++){
+            if(data[0]["dietHistory"][i][data[0]["dietHistory"][i].length-1] == req.body.date) {
+              dataForSpecificDay.push(data[0]["dietHistory"][i]);
+            } else if (dataForSpecificDay.length>0){
+              i=data[0]["dietHistory"].length
+            }
+        }
+        console.log(dataForSpecificDay)
+        res.send(dataForSpecificDay)
     } else {
       res.json("Error")
     }

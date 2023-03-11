@@ -30,7 +30,7 @@ export default function DietPage({userName}) {
 
 
     
-  function getDietHistoryFromServer(){
+  function getDietHistoryFromServer(date){
     fetch('http:192.168.2.115:5000/getDietHistory', {
       method: 'POST',
       headers: {
@@ -39,12 +39,16 @@ export default function DietPage({userName}) {
       },
       body: JSON.stringify({
         userName: userName,
+        date: date
       }),
     }).then(res => res.json()).then(data => {
-        dietHistoryData = data; 
-        turnDietHistoryDataIntoComponents()
+        //dietHistoryData = data; 
+        //turnDietHistoryDataIntoComponents()
+        setHistoryForDate(data)
     });
   }
+
+  var [historyForDate, setHistoryForDate] = useState([])
 
     var dietHistoryData = []
 
@@ -72,7 +76,7 @@ export default function DietPage({userName}) {
     }
     
     
-    getDietHistoryFromServer()
+    //getDietHistoryFromServer()
 
 
     function addToHistory(name, cals, carbs, protein, fat){
@@ -104,24 +108,37 @@ export default function DietPage({userName}) {
 
     const [popUpVis, setPopUpVis] = useState(false)
 
+    var [mode, setMode] = useState("calender")
+    function changeMode(date){
+      setMode(date)
+      getDietHistoryFromServer(date)
+    }
 
-    return (
+    if(mode=="calender"){
+      return (
+          <View style={mainStyle}>
+              <DietCalendar lookAtDay={changeMode} />
+              <Text style={{fontSize: "100%", color: "red", position: "absolute",  bottom: "1%", right: "5%"}} onPress={() => setPopUpVis(true)} >+</Text>
+              <Modal transparent={true} visible={popUpVis}>
+                  <View style={popupStyle}>
+                      <TextInput onChangeText={text => setFoodNameInput(text)} placeholder="Food Name" style={{padding: 20}} id="foodName"></TextInput>
+                      <TextInput onChangeText={text => setFoodCalsInput(text)} placeholder="Est. Cals"></TextInput>
+                      <TextInput onChangeText={text => setFoodCarbsInput(text)} placeholder="Est. Carbs"></TextInput>
+                      <TextInput onChangeText={text => setFoodProteinInput(text)} placeholder="Est. Protein"></TextInput>
+                      <TextInput onChangeText={text => setFoodFatInput(text)} placeholder="Est. Fats"></TextInput>
+                      <Button title="ADD" onPress={addFood}></Button>
+                      <Button title="X" onPress={() => {setPopUpVis(false)}}></Button>
+                  </View>
+              </Modal>
+          </View>
+      )
+    } else {
+      return (
         <View style={mainStyle}>
-            {dietHistoryComponents}
-            <DietCalendar />
-            <Text style={{fontSize: "100%", color: "red", position: "absolute",  bottom: "1%", right: "5%"}} onPress={() => setPopUpVis(true)} >+</Text>
-            <Modal transparent={true} visible={popUpVis}>
-                <View style={popupStyle}>
-                    <TextInput onChangeText={text => setFoodNameInput(text)} placeholder="Food Name" style={{padding: 20}} id="foodName"></TextInput>
-                    <TextInput onChangeText={text => setFoodCalsInput(text)} placeholder="Est. Cals"></TextInput>
-                    <TextInput onChangeText={text => setFoodCarbsInput(text)} placeholder="Est. Carbs"></TextInput>
-                    <TextInput onChangeText={text => setFoodProteinInput(text)} placeholder="Est. Protein"></TextInput>
-                    <TextInput onChangeText={text => setFoodFatInput(text)} placeholder="Est. Fats"></TextInput>
-                    <Button title="ADD" onPress={addFood}></Button>
-                    <Button title="X" onPress={() => {setPopUpVis(false)}}></Button>
-                </View>
-            </Modal>
+          <Text>{mode}</Text>
+          <Text>{historyForDate}</Text>
         </View>
-    )
+      )
+    }
 }
 

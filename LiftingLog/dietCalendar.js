@@ -2,7 +2,7 @@ import { Text, View, Modal, Button, TextInput } from 'react-native';
 import { useState } from 'react';
 import DietPageHistorySection from "./dietPageHistorySection.js"
 
-export default function DietCalendar() {
+export default function DietCalendar({lookAtDay}) {
     
     const dayOfWeekStyle = {
         color: "white",
@@ -30,7 +30,7 @@ export default function DietCalendar() {
     var thisMonth = []
     var d = new Date(2023, month, 0);
     for(var i=1; i<=d.getDate(); i++){
-        thisMonth.push(<Button title={i + " "}></Button>)
+        thisMonth.push(<DateBtn i={i} month={month} year={year} lookAtDay={lookAtDay} />)
         if(i%7==0){
             thisMonth.push("\n")
         }
@@ -45,5 +45,12 @@ export default function DietCalendar() {
             <Text>{thisMonth}</Text>
         </View>
     )
+}
+
+
+
+
+function DateBtn({i, month, year, lookAtDay}) {
+    return <Button title={i + " "} onPress={() => {lookAtDay(month+"/"+i+"/"+year)}}></Button>
 }
 
