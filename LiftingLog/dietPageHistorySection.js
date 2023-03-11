@@ -8,7 +8,7 @@ export default function DietPageHistorySection({data}) {
 
     return (
         <View style={{borderColor: "grey", borderWidth: 2, margin: "3%"}}>
-        <Button title={data[0][2]} onPress={()=>{setPartOfDietHistoryVisability(!partOfDietHistoryVisability)}}></Button>
+        <Button title={data[0][data[0].length-1]} onPress={()=>{setPartOfDietHistoryVisability(!partOfDietHistoryVisability)}}></Button>
             <IndividualFoodDietHistorySection data={data} partOfDietHistoryVisability={partOfDietHistoryVisability} />
         </View>
     )

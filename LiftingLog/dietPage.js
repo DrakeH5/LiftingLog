@@ -19,8 +19,8 @@ export default function DietPage({userName}) {
 
     const popupStyle = {
         position: "relative", 
-        top: "50%", 
-        backgroundColor: "white", 
+        top: "30%", 
+        backgroundColor: "lightblue", 
         justifyContent: "center", 
         alignItems: "center", 
         margin: "10%"
@@ -55,7 +55,7 @@ export default function DietPage({userName}) {
     function turnDietHistoryDataIntoComponents(){
       var foodsFromSameDay=[];
         for(var i=0; i<dietHistoryData.length; i++){
-          if(foodsFromSameDay.length==0 || foodsFromSameDay[0][2] == dietHistoryData[i][2] || i+1==dietHistoryData.length){
+          if(foodsFromSameDay.length==0 || foodsFromSameDay[0][foodsFromSameDay[0].length-1] == dietHistoryData[i][dietHistoryData[i].length-1] || i+1==dietHistoryData.length){
             foodsFromSameDay.push(dietHistoryData[i])
           } else {
             dietHistoryComponentsFromServerData.push(
@@ -74,7 +74,7 @@ export default function DietPage({userName}) {
     getDietHistoryFromServer()
 
 
-    function addToHistory(name, cals){
+    function addToHistory(name, cals, carbs, protein, fat){
         var date = new Date()
         fetch('http:192.168.2.115:5000/addToDietHistory', {
             method: 'POST',
@@ -84,7 +84,7 @@ export default function DietPage({userName}) {
             },
             body: JSON.stringify({
               userName: userName,
-              foodData: [name, cals, date.getMonth()+1+"/"+date.getDate()+"/"+date.getFullYear()]
+              foodData: [name, cals+" cals", carbs+" carbs", protein+" protein", fat+" fat", date.getMonth()+1+"/"+date.getDate()+"/"+date.getFullYear()]
             }),
           })
     }
@@ -92,8 +92,12 @@ export default function DietPage({userName}) {
 
     const [foodNameInput, setFoodNameInput] = useState()
     const [foodCalsInput, setFoodCalsInput] = useState()
+    const [foodCarbsInput, setFoodCarbsInput] = useState()
+    const [foodProteinInput, setFoodProteinInput] = useState()
+    const [foodFatInput, setFoodFatInput] = useState()
+
     function addFood(){
-        addToHistory(foodNameInput, foodCalsInput)
+        addToHistory(foodNameInput, foodCalsInput, foodCarbsInput, foodProteinInput, foodFatInput)
         setPopUpVis(false)
     }
 
@@ -108,6 +112,9 @@ export default function DietPage({userName}) {
                 <View style={popupStyle}>
                     <TextInput onChangeText={text => setFoodNameInput(text)} placeholder="Food Name" style={{padding: 20}} id="foodName"></TextInput>
                     <TextInput onChangeText={text => setFoodCalsInput(text)} placeholder="Est. Cals"></TextInput>
+                    <TextInput onChangeText={text => setFoodCarbsInput(text)} placeholder="Est. Carbs"></TextInput>
+                    <TextInput onChangeText={text => setFoodProteinInput(text)} placeholder="Est. Protein"></TextInput>
+                    <TextInput onChangeText={text => setFoodFatInput(text)} placeholder="Est. Fats"></TextInput>
                     <Button title="ADD" onPress={addFood}></Button>
                     <Button title="X" onPress={() => {setPopUpVis(false)}}></Button>
                 </View>
