@@ -3,6 +3,7 @@ import { useState } from 'react';
 import DietPageHistorySection from "./dietPageHistorySection.js"
 import DietCalendar from "./dietCalendar.js"
 import DateSpecificData from "./dateSpecificData.js"
+import TotalCalsForCurrentDay from "./totalCalsForCurrentDay.js"
 
 export default function DietPage({userName}) {
 
@@ -86,9 +87,15 @@ export default function DietPage({userName}) {
       getDietHistoryFromServer(date)
     }
 
+    if(historyForDate==""){
+      var date = new Date()
+      getDietHistoryFromServer(date.getMonth()+1+"/"+date.getDate()+"/"+date.getFullYear())
+    }
+
     if(mode=="calender"){
       return (
           <View style={mainStyle}>
+              <TotalCalsForCurrentDay data={historyForDate}/>
               <DietCalendar lookAtDay={changeMode} />
               <Text style={{fontSize: "100%", color: "red", position: "absolute",  bottom: "1%", right: "5%"}} onPress={() => setPopUpVis(true)} >+</Text>
               <Modal transparent={true} visible={popUpVis}>
