@@ -91,7 +91,6 @@ export default function DateSpecificData({date, data}) {
           <View style={eachMealStyle}>
             {eachMeal}
           </View>
-          <Text>{data}</Text>
         </View>
       )
  
