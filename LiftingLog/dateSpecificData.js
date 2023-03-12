@@ -81,7 +81,7 @@ export default function DateSpecificData({date, data}) {
         <View style={mainStyle}>
           <Text style={topInfoStyle}>
             <Text>{date}</Text>  {"\n"}
-            <Text>Total Calories: {totalCals}</Text>   {"\n"}
+            <Text style={{color: "white"}}>Total Calories: {totalCals}</Text>   {"\n"}
           </Text>
           <Text style={totalMacroInfoStyle}>
             <Text style={{color: "red"}}>Total Protein: {totalProtein}</Text> {"\n"}
