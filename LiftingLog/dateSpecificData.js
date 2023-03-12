@@ -32,7 +32,7 @@ export default function DateSpecificData({date, data}) {
       const eachMealStyle = {
         position: "absolute",
         width: "100%",
-        top: "45%"
+        top: "45%",
       }
 
 
@@ -57,12 +57,12 @@ export default function DateSpecificData({date, data}) {
     for(var i=0; i<data.length; i++){
       eachMeal.push(
         <View>
-          <Text style={{backgroundColor: "lightblue", width: "100%", textAlign: "center"}}>Food {i+1}</Text>
-          <Text style={{color: "white", width: "100%", textAlign: "center"}}>
+          <Text style={{backgroundColor: "lightblue", width: "100%", textAlign: "center", fontSize: "20%"}}>Food {i+1}</Text>
+          <Text style={{color: "white", width: "100%", textAlign: "center", fontSize: "25%"}}>
             <Text>{data[i][0]} </Text>
             <Text> {data[i][1]} calories</Text>
           </Text>
-          <Text style={{color: "white", width: "100%", textAlign: "center"}}>
+          <Text style={{color: "white", width: "100%", textAlign: "center", fontSize: "20%"}}>
             <Text style={{color: "red"}}>{data[i][3]} Protein</Text>
             <Text style={{color: "lightgreen"}}> {data[i][2]} Carbs</Text> 
             <Text style={{color: "gold"}}> {data[i][4]} Fat</Text> 
