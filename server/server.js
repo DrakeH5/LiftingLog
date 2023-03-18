@@ -71,8 +71,8 @@ app.post("/getDietHistory", bodyParser.json(), (req, res) => {
               i=data[0]["dietHistory"].length
             }
         }
-        console.log(dataForSpecificDay)
-        res.send(dataForSpecificDay)
+          console.log(dataForSpecificDay)
+          res.send(dataForSpecificDay)
     } else {
       res.json("Error")
     }

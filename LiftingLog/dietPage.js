@@ -1,5 +1,5 @@
 import { Text, View, Modal, Button, TextInput } from 'react-native';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import DietPageHistorySection from "./dietPageHistorySection.js"
 import DietCalendar from "./dietCalendar.js"
 import DateSpecificData from "./dateSpecificData.js"
@@ -87,10 +87,10 @@ export default function DietPage({userName}) {
       getDietHistoryFromServer(date)
     }
 
-    if(historyForDate==""){
+    useEffect(() => {
       var date = new Date()
       getDietHistoryFromServer(date.getMonth()+1+"/"+date.getDate()+"/"+date.getFullYear())
-    }
+    }, [])
 
     if(mode=="calender"){
       return (
