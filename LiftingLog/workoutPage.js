@@ -4,6 +4,7 @@ import WorkoutHistoryModal from "./workoutHistoryModal.js"
 import AddWorkoutModal from "./addWorkoutModal.js"
 import PresetsModal from "./presetsModal.js"
 import { TouchableOpacityComponent } from 'react-native';
+import ShowWorkoutPresets from "./showWorkoutPresets.js"
 
 export default function WorkoutPage({userName}) {
 
@@ -11,11 +12,6 @@ export default function WorkoutPage({userName}) {
         backgroundColor: "rgb(15,15,15)", 
         height: "100%", 
         zIndex: -1,
-    }
-
-    const generalTextStyle = {
-        color: "white",
-        fontSize: "30%",
     }
 
     const popupStyle = {
@@ -27,9 +23,12 @@ export default function WorkoutPage({userName}) {
         margin: "10%"
     }
    
+
+
+
     return (
         <View style={mainStyle}>
-            <Image source={require('./deadliftLogo.png')} style={{position: 'absolute',alignSelf: 'center', bottom: '-5%', width: "100%", height: "100%"}} resizeMode="contain" />
+            <ShowWorkoutPresets userName={userName}/>
             <AddWorkoutModal userName={userName}></AddWorkoutModal>
             <WorkoutHistoryModal userName={userName}></WorkoutHistoryModal>
             <PresetsModal userName={userName}/>
