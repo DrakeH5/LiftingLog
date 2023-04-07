@@ -6,10 +6,13 @@ export default function PresetsModal({userName}) {
     const modalViewStyle = {
         position: "relative", 
         top: "20%", 
-        backgroundColor: "grey", 
+        backgroundColor: "dodgerblue", 
         justifyContent: "center", 
         alignItems: "center", 
-        margin: "10%"
+        margin: "10%",
+        opacity: 0.75,
+        borderColor: "gold",
+        borderWidth: 5,
     }
     const textInputStyle = {
         padding: 20
@@ -52,7 +55,7 @@ export default function PresetsModal({userName}) {
             <Text style={{fontSize: "90%", color: "dodgerblue", position: "absolute",  bottom: "1%", left: "5%"}} onPress={() => setShowAddWorkoutModule(true)} >P</Text>
             <Modal transparent={true} visible={showAddWorkoutModule}>
                 <View style={modalViewStyle}>
-                    <Text>ADD WORKOUT PRESET</Text>
+                    <Text style={{color: "gold", fontSize: 25}}>{"\n"}ADD WORKOUT PRESET</Text>
                     <TextInput onChangeText={text => setName(text)} placeholder="NAME" style={textInputStyle} id="name"></TextInput>
                     <TextInput onChangeText={text => setWorkout1(text)} placeholder="Workout 1" style={textInputStyle} id="workout1"></TextInput>
                     <TextInput onChangeText={text => setWorkout2(text)} placeholder="Workout 2" style={textInputStyle} id="workout2"></TextInput>
@@ -60,8 +63,8 @@ export default function PresetsModal({userName}) {
                     <TextInput onChangeText={text => setWorkout4(text)} placeholder="Workout 4" style={textInputStyle} id="workout4"></TextInput>
                     <TextInput onChangeText={text => setWorkout5(text)} placeholder="Workout 5" style={textInputStyle} id="workout5"></TextInput>
                     <TextInput onChangeText={text => setWorkout6(text)} placeholder="Workout 6" style={textInputStyle} id="workout6"></TextInput>
-                    <Button title="Add Workout Preset" onPress={addWorkoutPreset} />  
-                    <Button title="X" onPress={() => {setShowAddWorkoutModule(false)}} />
+                    <Button color="gold" title="Add Workout Preset" onPress={addWorkoutPreset} />  
+                    <Button color="red" title="X" onPress={() => {setShowAddWorkoutModule(false)}} />
                 </View>
             </Modal>
         </View>
