@@ -11,17 +11,20 @@ export default function AddWorkoutModal({userName}) {
         justifyContent: "center", 
         alignItems: "center", 
         margin: "10%",
+        borderColor: "gold",
+        borderWidth: 5,
     }
     const presetsModalViewStyle = {
         position: "relative", 
-        top: "-41%", 
+        top: "-42.5%", 
         justifyContent: "right", 
         alignItems: "right", 
         margin: "10%",
         backgroundColor: "dodgerblue",
         width: 100,
-        height: 435,
-        opacity: 0.75
+        height: 445,
+        opacity: 0.75,
+        left: 5
     }
     const workoutTextStyle = {
         color: "white",
@@ -123,7 +126,7 @@ export default function AddWorkoutModal({userName}) {
             <Text style={{fontSize: "100%", color: "red", position: "absolute",  bottom: "1%", right: "5%"}} onPress={() => setShowAddWorkoutModule(true)} >+</Text>
             <Modal transparent={true} visible={showAddWorkoutModule}>
                 <View style={modalViewStyle}>
-                    <Text style={{color: "red", fontSize: 20, position: "relative", left: 30}}>ADD WORKOUT</Text>
+                    <Text style={{color: "red", fontSize: 25, position: "relative", left: 50}}>ADD WORKOUT</Text>
                     <TextInput onChangeText={text => setWorkout1(text)} placeholder={workout1Placeholder} style={textInputStyle} id="workout1"></TextInput>
                     <TextInput onChangeText={text => setWorkout2(text)} placeholder={workout2Placeholder} style={textInputStyle} id="workout2"></TextInput>
                     <TextInput onChangeText={text => setWorkout3(text)} placeholder={workout3Placeholder} style={textInputStyle} id="workout3"></TextInput>
