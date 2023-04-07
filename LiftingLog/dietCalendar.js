@@ -44,9 +44,9 @@ export default function DietCalendar({lookAtDay}) {
     return (
         <View style={mainStyle}>
             <View style={{flexDirection: "row", textAlign: "center", width: "100%", justifyContent: "center"}}>
-                <Button title="<" onPress={() => {setMonth(month-1); if(month<=1){setMonth(12); setYear(year-1)}}}></Button>
+                <Button title="<" onPress={() => {setMonth(month-1); if(month<=1){setMonth(12); setYear(year-1)}}} color="gold"></Button>
                 <Text style={{fontSize: "25%", color: "white", textAlign: "center"}}>{month} / {year}</Text>
-                <Button title=">" onPress={() => {setMonth(month+1); if(month>=12){setMonth(1); setYear(year+1)}}}></Button>
+                <Button title=">" onPress={() => {setMonth(month+1); if(month>=12){setMonth(1); setYear(year+1)}}} color="gold"></Button>
             </View>
             <Text style={{textAlign: "center", width: "auto", justifyContent: "center", backgroundColor: "lightblue", opacity: 1, borderColor: "red", borderWidth: 4, alignItems: "center"}}>{thisMonth}</Text>
         </View>
