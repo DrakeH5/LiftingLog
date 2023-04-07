@@ -48,7 +48,7 @@ export default function DietCalendar({lookAtDay}) {
                 <Text style={{fontSize: "25%", color: "white", textAlign: "center"}}>{month} / {year}</Text>
                 <Button title=">" onPress={() => {setMonth(month+1); if(month>=12){setMonth(1); setYear(year+1)}}}></Button>
             </View>
-            <Text style={{textAlign: "center", width: "auto", justifyContent: "center", backgroundColor: "lightgreen", alignItems: "center"}}>{thisMonth}</Text>
+            <Text style={{textAlign: "center", width: "auto", justifyContent: "center", backgroundColor: "lightblue", opacity: 1, borderColor: "red", borderWidth: 4, alignItems: "center"}}>{thisMonth}</Text>
         </View>
     )
 }
@@ -61,6 +61,6 @@ function DateBtn({i, month, year, lookAtDay}) {
     if(i<10){
         date=" " + date + " ";
     }
-    return <Button title={date + " "} onPress={() => {lookAtDay(month+"/"+i+"/"+year)}}></Button>
+    return <Button title={date + " "} onPress={() => {lookAtDay(month+"/"+i+"/"+year)}} color="black"></Button>
 }
 
