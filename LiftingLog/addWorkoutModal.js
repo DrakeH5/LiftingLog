@@ -6,17 +6,22 @@ export default function AddWorkoutModal({userName}) {
     const modalViewStyle = {
         position: "relative", 
         top: "20%", 
-        backgroundColor: "grey",
+        backgroundColor: "skyblue",
+        opacity: 0.75,
         justifyContent: "center", 
         alignItems: "center", 
-        margin: "10%"
+        margin: "10%",
     }
     const presetsModalViewStyle = {
         position: "relative", 
-        top: "-40%", 
+        top: "-41%", 
         justifyContent: "right", 
         alignItems: "right", 
-        margin: "10%"
+        margin: "10%",
+        backgroundColor: "dodgerblue",
+        width: 100,
+        height: 435,
+        opacity: 0.75
     }
     const workoutTextStyle = {
         color: "white",
@@ -52,7 +57,7 @@ export default function AddWorkoutModal({userName}) {
       function turnWorkoutPresetDataIntoComponents(){
           workoutPresetsData.forEach(data => {
             workoutPresetComponentsFromServerData.push(
-                <Button title={data[0]} onPress={() => {autoFillPresets(data[1], data[2], data[3], data[4], data[5], data[6], data[7])}} />
+                <Button color="gold" title={data[0]} onPress={() => {autoFillPresets(data[1], data[2], data[3], data[4], data[5], data[6], data[7])}} />
             )
           })
           setWorkoutPresetComponents(workoutPresetComponentsFromServerData)
@@ -118,7 +123,7 @@ export default function AddWorkoutModal({userName}) {
             <Text style={{fontSize: "100%", color: "red", position: "absolute",  bottom: "1%", right: "5%"}} onPress={() => setShowAddWorkoutModule(true)} >+</Text>
             <Modal transparent={true} visible={showAddWorkoutModule}>
                 <View style={modalViewStyle}>
-                    <Text>ADD WORKOUT</Text>
+                    <Text style={{color: "red", fontSize: 20, position: "relative", left: 30}}>ADD WORKOUT</Text>
                     <TextInput onChangeText={text => setWorkout1(text)} placeholder={workout1Placeholder} style={textInputStyle} id="workout1"></TextInput>
                     <TextInput onChangeText={text => setWorkout2(text)} placeholder={workout2Placeholder} style={textInputStyle} id="workout2"></TextInput>
                     <TextInput onChangeText={text => setWorkout3(text)} placeholder={workout3Placeholder} style={textInputStyle} id="workout3"></TextInput>
@@ -126,10 +131,10 @@ export default function AddWorkoutModal({userName}) {
                     <TextInput onChangeText={text => setWorkout5(text)} placeholder={workout5Placeholder} style={textInputStyle} id="workout5"></TextInput>
                     <TextInput onChangeText={text => setWorkout6(text)} placeholder={workout6Placeholder} style={textInputStyle} id="workout6"></TextInput>
                     <Button title="Add Workout" onPress={addWorkout} />  
-                    <Button title="X" onPress={() => {setShowAddWorkoutModule(false)}} />
+                    <Button color="red" title="X" onPress={() => {setShowAddWorkoutModule(false)}} />
                 </View>
                 <View style={presetsModalViewStyle}>
-                    <Text>Presets</Text>
+                    <Text style={{color: "blue", fontSize: 30}}>Presets</Text>
                     {workoutPresetComponents}
                 </View>
             </Modal>
